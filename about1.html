@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Tyson's Blog</title>
+<title>Tyson Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Coffee Break Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
@@ -23,6 +23,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 		</script>
 <!--start-smoth-scrolling-->
+	<!--script-->
+	<script src="js/modernizr.custom.97074.js"></script>
+<script src="js/jquery.chocolat.js"></script>
+		<link rel="stylesheet" href="css/chocolat.css" type="text/css" media="screen" charset="utf-8">
+		<!--light-box-files -->
+		<script type="text/javascript" charset="utf-8">
+		$(function() {
+			$('.gallery a').Chocolat();
+		});
+		</script>
+		<script type="text/javascript" src="js/jquery.hoverdir.js"></script>
 </head>
 <body>
 	<!--header-top-starts-->
@@ -41,10 +52,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="navigation">
 				 <span class="menu"></span> 
 					<ul class="navig">
-						<li><a href="index.html"  class="active">Home</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="single.html">Blog</a></li>
-						
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about.html" class="active">About</a></li>
+						<li><a href="gallery.html">Gallery</a></li>
+						<li><a href="typo.html">Typo</a></li>
+						<li><a href="contact.html">Contact</a></li>
 					</ul>
 			</div>
 			<div class="header-right">
@@ -52,13 +64,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
 					<input type="submit" value="">
 				</div>
-				<!--<ul>
+				<ul>
 					<li><a href="#"><span class="fb"> </span></a></li>
 					<li><a href="#"><span class="twit"> </span></a></li>
 					<li><a href="#"><span class="pin"> </span></a></li>
 					<li><a href="#"><span class="rss"> </span></a></li>
 					<li><a href="#"><span class="drbl"> </span></a></li>
-				</ul>-->
+				</ul>
 			</div>
 				<div class="clearfix"></div>
 			</div>
@@ -66,12 +78,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>	
 	<!-- script-for-menu -->
 	<!-- script-for-menu -->
-		<!--<script>
+		<script>
 			$("span.menu").click(function(){
 				$(" ul.navig").slideToggle("slow" , function(){
 				});
 			});
-		</script>-->
+		</script>
 	<!-- script-for-menu -->
 	<!--banner-starts-->
 	<div class="banner">
@@ -88,23 +100,54 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!--banner-end-->
-	<!--about-starts-->
-	<div class="about">
+	<!--welcome-starts-->
+	<div class="welcome">
 		<div class="container">
-			<div class="about-main">
-				<div class="col-md-8 about-left">
-					
-					
-					</div>
-					
+			<div class="welcome-top heading">
+				<h3>WELCOME</h3>
+				<div class="welcome-bottom">
+					<img src="images/abt-1.jpg" alt=""/>
+					<p>Vivamus interdum diam diam, non faucibus tortor consequat vitae. Proin sit amet augue sed massa pellentesque viverra. Suspendisse iaculis purus eget est pretium aliquam ut sed diam. Nullam non magna lobortis, faucibus erat eu, consequat justo. Suspendisse commodo nibh odio, vel elementum nulla luctus sit amet.</p>
+					<p>Nulla in tempor lectus. Etiam ac mauris lacinia nulla ultricies porta sit amet eleifend ligula. Quisque tincidunt vitae turpis at efficitur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec sagittis, magna a sagittis dapibus, ipsum metus interdum lectus, quis feugiat leo ipsum nec diam.</p>
 				</div>
-				<div class="clearfix"></div>			
-			</div>		
+			</div>
 		</div>
 	</div>
-	<!--about-end-->
+	<!--welcome-end-->
+	<!--team-starts-->
+	<div class="team">
+		<div class="container">
+		<div class="team-top heading">
+			<h3>OUR TEAM</h3>
+		</div>
+			<div class="team-bottom">
+				<div class="col-md-3 team-left">
+					<img src="images/t-1.jpg" alt="" />
+					<h4>Rita Nelson</h4>
+					<p>Fusce at elementum diam. Integer pellentesque ultricies pharetra.</p>
+				</div>
+				<div class="col-md-3 team-left">
+					<img src="images/t-2.jpg" alt="" />
+					<h4>Marta Healy</h4>
+					<p>Fusce at elementum diam. Integer pellentesque ultricies pharetra.</p>
+				</div>
+				<div class="col-md-3 team-left">
+					<img src="images/t-3.jpg" alt="" />
+					<h4>John Black</h4>
+					<p>Fusce at elementum diam. Integer pellentesque ultricies pharetra.</p>
+				</div>
+				<div class="col-md-3 team-left">
+					<img src="images/t-4.jpg" alt="" />
+					<h4>Kate Tompson</h4>
+					<p>Fusce at elementum diam. Integer pellentesque ultricies pharetra.</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--team-end-->
 	<!--slide-starts-->
-<!--	<div class="slide">-->
+	<div class="slide">
 		<div class="container">
 			<div class="fle-xsel">
 			<ul id="flexiselDemo3">
@@ -190,9 +233,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="footer">
 		<div class="container">
 			<div class="footer-text">
-				<p>© 2016 Tyson's Blog | Design by  <a href="" target="_blank">Renhao</a> </p>
-				<br />
-				<p>友情链接 |  <a href="http://blog.lxmoses.com">Moses</a>&nbsp;&nbsp;<a href="https://tianshuang.me/">Posion</a></p>
+				<p>© 2015 Coffee Break. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 			</div>
 		</div>
 	</div>
