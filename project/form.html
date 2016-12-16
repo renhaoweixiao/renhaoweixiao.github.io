@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+		window.onload=function(){
+			var resultObj = document.getElementById("username_result");
+			resultObj.innerHTML="<font style='font-size: 15px;color: #ccc;'>用户名长度为6-20位且不能含有非法字符</font>";
+			var resultObj1 = document.getElementById("userpwd_result");
+			resultObj1.innerHTML="<font style='font-size: 15px;color: #ccc;'>密码长度为6-20位且不能含有非法字符</font>";
+		}
+		/*********************用户名框判断***************************/
+		    //获得用户名框焦点时候调用函数
+			function focus_username(){
+				//获取id=usernam_result的对象
+				var resultObj = document.getElementById("username_result");
+				//写入信息
+				resultObj.innerHTML="请输入用户名";
+				resultObj.style.color="#ccc";
+				
+			}
+			//失去用户名文本框焦点时的函数
+			function blur_username(){
+				var resultObj = document.getElementById("username_result");
+				//用户名的验证
+				var str =document.form1.username.value;
+				if(str==""){
+					resultObj.innerHTML="<font color='red'>用户名不能为空</font>";
+					return false;
+				}else if(str.length<6 || str.length>20){
+					resultObj.innerHTML="<font color='red'>用户名长度必须介于6~20之间!</font>";
+					resultObj.style.color="red";
+					return false;
+				}else if(checkChar(str)){
+					resultObj.innerHTML = "<font color='red'>用户名中含有非法字符</font> ";
+					resultObj.style.color="red";
+					return false;
+				}else{
+					resultObj.innerHTML ="<img src='img/ok.png' style='width: 20px;' />";
+					return true;
+				}
+			}
+			/****************密码框处理**********************/
+			//获得密码名框焦点时候调用函数
+			function focus_userpwd(){
+				//获取id=usernam_result的对象
+				var resultObj = document.getElementById("userpwd_result");
+				//写入信息
+				resultObj.innerHTML="请输入用户名";
+				resultObj.style.color="#ccc";
+			}
+			//失去密码框焦点时的函数
+			function blur_userpwd(){
+				var resultObj = document.getElementById("userpwd_result");
+				//密码的验证
+				var str =document.form1.userpwd.value;
+				if(str==""){
+					resultObj.innerHTML="<font color='red'>密码不能为空</font>";
+					return false;
+				}else if(str.length<6 || str.length>20){
+					resultObj.innerHTML="<font color='red'>密码长度必须介于6~20之间!</font>";
+					resultObj.style.color="red";
+					return false;
+				}else if(checkChar(str)){
+					resultObj.innerHTML = "<font color='red'>密码中含有非法字符</font> ";
+					resultObj.style.color="red";
+					return false;
+				}else{
+					resultObj.innerHTML ="<img src='img/ok.png' style='width: 20px;' />";
+					return true;
+				}
+			}
+			/******************非法字符判断*********************/
+			function checkChar(str){
+				//定义一个特殊符号数组
+				var arr = ["*","&","<",">","$","\\","/"];
+				//循环比较：数组中的没一个字符，与用户名的没一个字符进行比较
+				for(var i=0;i<arr.length;i++){
+					for(var j=0;j<str.length;j++){
+						if(arr[i]==str.charAt(j)){
+							return true;
+						}
+					}
+				}
+				//如果没找到
+				return false;
+			}
+			
+			function checkform(){
+				//通过失去焦点时用户名和密码返回值来判断是否提交
+				var flag_username = blur_username();
+				var flag_userpwd = blur_userpwd();
+				if(flag_username==true && flag_userpwd==true){
+					return true;
+				}else{
+					return false;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form action="login.php" method="post" name="form1" onsubmit="return checkform()">
+			<table width="600" border="1" bordercolor="#ccc" align="center" cellpadding="5">
+				<tr>
+					<td width="100">用户名：</td>
+					<td><input type="text" name="username" onfocus="focus_username()" onblur="blur_username()"/></td>
+					<td width="300"><div id="username_result"></div></td>
+				</tr>
+				<tr>
+					<td >密码：</td>
+					<td><input type="password" name="userpwd" onfocus="focus_userpwd()" onblur="blur_userpwd()"/></td>
+					<td ><div id="userpwd_result"></div></td>
+				</tr>
+				<tr>
+					<td >&nbsp;</td>
+					<td colspan="2">
+						<input type="submit" value="提交表单" />
+						<input type="reset" value="重新填写" />
+					</td>
+					
+				</tr>
+			</table>
+			
+		</form>
+	</body>
+</html>
