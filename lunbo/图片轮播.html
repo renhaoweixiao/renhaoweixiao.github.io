@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.12.2.min.js" ></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#banner{
+				width: 624px;
+				height: 413px;
+				overflow: hidden;
+				border: 1px solid red;
+				position: relative;
+				margin: 100px auto;
+			}
+			#pic ul li{
+				list-style: none;
+				position: absolute;
+				z-index: 1;
+				opacity: 0;
+			}
+			#lis ul{
+				width: 180px;
+				height: 30px;
+				position: absolute;
+				bottom: 10px;
+				left: 50%;
+				margin-left:-80px;
+				z-index:2;
+				
+			}
+			#lis ul li{
+				list-style: none;
+				width: 11px;
+				height: 11px;
+				float:left;
+				margin: 0 8px;
+				cursor:pointer;
+				background: url(img/dot.png) center center no-repeat;
+			}
+			#lis ul li.on{
+				background: url(img/doth.png) center center no-repeat;
+			}
+			#btn div{
+				width: 30px;
+				height: 52px;
+				position: absolute;
+				top: 50%;
+				z-index: 2;
+				background: rgba(0,0,0,.3);
+				color: #fff;
+				font-size: 48px;
+				line-height: 52px;
+				text-align: center;
+				margin-top: -26px;
+				cursor: pointer;
+				display: none;
+			}
+			#btn .left{
+				left: 0;
+			}
+			#btn .right{
+				right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="banner">
+			<div id="pic">
+				<ul>
+					<li style="opacity: 1;"><img src="img/1.jpg" /></li>
+					<li><img src="img/2.jpg" /></li>
+					<li><img src="img/3.jpg" /></li>
+					<li><img src="img/4.jpg" /></li>
+					<li><img src="img/5.jpg" /></li>
+					<li><img src="img/6.jpg" /></li>
+				</ul>
+			</div>
+			
+			<div id="lis">
+				<ul>
+					<li class="on"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+			<div id="btn">
+				<div class="left">&lt;</div>
+				<div class="right">&gt;</div>
+			</div>
+		</div>
+		
+		<script src="js/jquery-1.12.2.min.js"></script>
+		<script>
+			$(function(){
+				var $pics = $("#pic ul li");
+				var $lis = $("#lis ul li");
+				var $btns = $("#btn div"); 
+				var index = 0;
+				var timer = null;
+				//鼠标移入时触发事件
+				$("#banner").mouseover(function(){
+					$btns.show();
+					clearInterval(timer);
+				}).mouseout(function(){
+					$btns.hide();
+					auto();
+				});
+				
+				//鼠标移入焦点
+			$lis.mouseover(function(){
+				index = $(this).index();
+				$(this).addClass("on").siblings().removeClass("on");
+				$pics.eq(index).stop(true).animate({
+					"opacity":1},1000).siblings().stop(true).animate({"opacity":0},1000)
+			});
+			
+				//左右按钮控制
+				$btns.click(function(){
+					var btnIndex = $(this).index();  //只有2按钮，获取当前点击按钮的索引0或者1来判断左右
+					if(btnIndex==0){
+						index--;
+						index<0 ? index=$pics.length-1 : index=index;
+					}else if(btnIndex==1){
+						index++;
+						index>$pics.length-1 ? index=0 : index=index;
+					}
+					$lis.eq(index).addClass("on").siblings().removeClass("on"); //焦点
+					$pics.eq(index).stop(true).animate({"opacity":1},1500).siblings().stop(true).animate({"opacity":0},1500)
+					
+				})
+				//自动切换图片
+					function auto(){
+				timer = setInterval(function(){
+					index++
+					if(index>$pics.length-1){
+						index = 0;
+					}
+					$lis.eq(index).addClass("on").siblings().removeClass("on");$pics.eq(index).stop(true).animate({"opacity":1},1000).siblings().stop(true).animate({"opacity":0},1000)
+				},2000)
+			}
+					auto();
+			})
+			
+			
+			
+			
+		
+			
+		</script>
+	</body>
+</html>
