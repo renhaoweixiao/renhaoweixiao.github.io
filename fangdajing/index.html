@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>模拟淘宝放大镜</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: gray;
+			}
+			#warp{
+				width: 400px;
+				height: 500px;
+				margin: 50px 0 0 50px;
+				background: grey;
+				box-shadow: 0 0 1em #fff;
+			}
+			#warp .pic{
+				width: 400px;
+				height: 400px;
+				position: relative;
+			}
+			#warp .tab{
+				width: 400px;
+				height: 58px;
+				margin-top: 20px;
+				background: grey;
+			}
+			#warp .tab ul li{
+				width: 50px;
+				height: 50px;
+				float: left;
+				margin-left: 24px;
+				border: 2px solid grey;
+				transition: border 1s;
+				position: relative;
+				list-style: none;
+			}
+			#warp .tab ul li.on{
+				border: 2px solid red;
+				border: 2px solid #f60;
+			}
+			#warp .tab ul li img{
+				position: absolute;
+			}
+			/* 遮罩*/
+			#warp .pic .pic_box{
+				position: absolute;
+			}
+			#warp .pic .pic_box .cover{
+				width: 200px;
+				height: 200px;
+				background-image: url("img/cover.png");
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: none;
+				cursor: move;
+			}
+			#warp .pic .pic_box .show{
+				width: 400px;
+				height: 400px;
+				background: pink;
+				position: absolute;
+				top: 0;
+				right: -410px;
+				background-image: url("img/1.jpg");
+				display: none;
+			}
+			#warp .pic .pic_box img{
+				display:block;
+				}
+		</style>
+	</head>
+	<body>
+		<div id="warp">
+			<div class="pic">
+				<div class="pic_box">
+					<img src="img/1.jpg"  width="400" height="400"/>
+					<div class="cover"></div>
+					<div class="show"></div>
+				</div>	
+			</div>
+			<div class="tab">
+				<ul>
+					<li class="on"><img src="img/1.jpg"/></li>
+					<li><img src="img/2.jpg"/></li>
+					<li><img src="img/3.jpg"/></li>
+					<li><img src="img/4.jpg"/></li>
+					<li><img src="img/5.jpg"/></li>
+				</ul>
+			</div>
+		</div>
+		<script src="js/jquery-1.12.2.min.js"></script>
+		<script>
+			$(function(){
+				var lis = $("#warp .tab ul li");
+				var pimg = $("#warp .pic .pic_box img");
+				var imgs = $("#warp .tab ul li img");
+				var pic_box = $("#warp .pic .pic_box");
+				var cover = $("#warp .pic .pic_box .cover");
+				var $show = $("#warp .pic .pic_box .show");
+				var imgArr = [];
+				var index = 0;
+					lis.hover(function(){
+				index = $(this).index();
+				$(this).addClass("on").siblings().removeClass("on");
+				var src = $(this).find("img").attr("src");
+				pimg.attr("src",src);
+
+				$show.css({
+					//backgroundImage:"url("+src+")"
+					"background-image":"url("+src+")"
+				});
+
+				pimg.css({
+					width:imgArr[index].width*400,
+					height:imgArr[index].height*400,					
+				});
+				pic_box.css({
+					top:(400-imgArr[index].height*400)/2,
+					left:(400-imgArr[index].width*400)/2
+				});
+			});	
+
+				//初始化图片的位置大小
+				function init(){
+						imgs.each(function(i){
+					var width = $(this).width();
+					var height = $(this).height();
+					var swidth = 50*width/height;
+					var sheight = 50*height/width;
+					if(width>=height){
+						$(this).css({
+							width:50,
+							height:sheight,
+							top:(50-sheight)/2
+						});
+						imgArr[i] = {width:1,height:sheight/50,imgW:width,imgH:height};
+					}else{
+						$(this).css({
+							width:swidth,
+							height:50,
+							left:(50-swidth)/2
+						});
+						imgArr[i] = {width:swidth/50,height:1,imgW:width,imgH:height};
+					}
+				});			
+			}
+				init();
+				
+				pic_box.mousemove(function(e){
+				cover.show();
+				$show.show();
+				var coverWidth = $(this).width()/imgArr[index].imgW*400;
+				var coverHeight = $(this).width()/imgArr[index].imgW*400;
+				//设置cover的宽度和高度
+				cover.css({
+					width:coverWidth,
+					height:coverHeight
+				});
+				var ev = e || window.event;
+				var x = ev.pageX;
+				var y = ev.pageY;
+				var cx = pic_box.offset().left;
+				var cy = pic_box.offset().top;
+				var minusX = x - cx - cover.width()/2;
+				var minusY = y - cy - cover.height()/2;
+				var maxX = pic_box.width() - cover.width();
+				var maxY = pic_box.height() - cover.height();
+				if(minusX<0)minusX=0;
+				if(minusY<0)minusY=0;
+				if(minusX>maxX)minusX=maxX;
+				if(minusY>maxY)minusY=maxY;
+				cover.css({
+					left:minusX,
+					top:minusY
+				});	
+				var bix = minusX/pic_box.width();
+				var biy = minusY/pic_box.height();
+				var imgWidth = imgArr[index].imgW;
+				var imgHeight = imgArr[index].imgH;
+				console.log(imgWidth*bix+"==="+imgHeight*biy)
+				$show.css({
+					"background-position":(-imgWidth*bix)+"px "+(-imgHeight)*biy+"px"
+				});
+
+						
+			}).mouseout(function(){
+				cover.hide();
+				$show.hide();
+			});
+			})
+		</script>
+	</body>
+</html>

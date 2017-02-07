@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="bootstrap.css" />
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" />
+		<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+			.content{
+				width: 600px;
+				height: 400px;
+				border: 1px solid #fff;
+				box-shadow: 0 0 15px #222;
+				border-radius: 8px;
+				margin: 100px auto;
+				padding: 10px 30px 10px;
+			}
+			.title{
+				font-size: 28px;
+				font-weight: bold;
+				display:inline-block;
+				margin-left: 30px;
+			}
+			.input-group .form-control {
+			   	 width: auto;
+			    margin-bottom: 0;
+			     }
+			.input{
+				width: 200px;
+			}
+			.tip{
+				font-size: 14px;
+			}
+			.input-group{
+				margin-bottom: 10px;
+			}
+			.btn-sub{
+				width: 275px;
+			}
+		</style>
+	</head>
+	<body ng-app="myApp">
+		<div class="content" ng-controller="myCtrl">
+			<h4 align="center" class="title">基于Angular和bootstrap注册系统</h4>
+			<form name="regist" class="form-horizontal form-fluid">
+				<div class="input-group">
+					 <span class="input-group-addon" id="sizing-addon1">用户名&emsp;</span>
+					<input class="form-control  input" placeholder="用户名长度6-12位" aria-describedby="sizing-addon1" id="username" name="username" type="text" ng-maxlength="12" ng-minlength="6" ng-required="true" ng-model="data.username"/>
+					&emsp;<span ng-show="regist.username.$dirty && regist.username.$invalid" class="tip text-danger">请按要求输入正确的用户名！</span>
+					<img ng-show="regist.username.$dirty && regist.username.$valid" src="1.png"  width="30px"/>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon" id="sizing-addon1">手机号&emsp;</span>
+					<input  class="form-control  input" placeholder="请输入11位手机号" aria-describedby="sizing-addon1"  ng-pattern="/^1[34578]\d{9}$/" id="tel" name="tel" type="text" ng-required="true" ng-model="data.tel"/>
+					&emsp;<span ng-show="regist.tel.$dirty && regist.tel.$invalid" class="tip text-danger">请检查输入正确的手机号！</span>
+					<img ng-show="regist.tel.$dirty && regist.tel.$valid"  src="1.png"  width="30px"/>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon" id="sizing-addon1">邮箱&emsp;&emsp;</span>
+					<input  class="form-control  input" placeholder="请输入您的邮箱" aria-describedby="sizing-addon1"  ng-pattern="/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/" id="email" name="email" type="text"  ng-required="true" ng-model="data.email"/>
+					&emsp;<span ng-show="regist.email.$dirty && regist.email.$incvalid" class="tip text-danger">请输入您的可用邮箱邮箱！</span>
+					<img ng-show="regist.email.$dirty && regist.email.$valid"  src="1.png"  width="30px"/>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon" id="sizing-addon1">密码&emsp;&emsp;</span>
+					<input  class="form-control  input" ng-pattern="/^[a-zA-Z0-9]{6,10}$/" placeholder="密码为6-10位数字或字母" aria-describedby="sizing-addon1" id="password" name="password" type="password" ng-maxlength="12" ng-minlength="6" ng-required="true" ng-model="data.password"/>
+					&emsp;<span ng-show="regist.password.$dirty && regist.password.$invalid" class="tip text-danger">密码只能为6-10位数字或字母！</span>
+					<img ng-show="regist.password.$dirty && regist.password.$valid"  src="1.png"  width="30px"/>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon" id="sizing-addon1">确认密码</span>
+					<input  class="form-control  input" placeholder="再次输入密码" aria-describedby="sizing-addon1" id="againpasspassword" name="againpass" type="password" ng-maxlength="12" ng-minlength="6" ng-required="true" ng-model="data.againpass"/>
+					&emsp;<span ng-show="data.againpass != data.password" class="tip text-danger">两次密码输入不一致！</span>
+					<img  ng-show="regist.againpass.$dirty && regist.againpass.$valid && data.againpass === data.password"  src="1.png"  width="30px"/>
+				</div>
+			
+				<div class="">
+					<button class="btn btn-success btn-sub" ng-click="check()">确认注册</button>
+				</div> 
+			</form>
+		</div>
+		
+		<script type="text/javascript" src="angular.js"></script>
+		<script>
+			var app = angular.module('myApp',[]);
+			
+			app.controller('myCtrl',function($scope){
+				$scope.data = {};
+				$scope.err = false;
+				
+				$scope.check = function(){
+					//console.log($scope.regist);
+					//console.log($scope.data)
+					console.log($scope.regist.$valid)
+					if($scope.regist.$valid){
+						alert('注册成功');
+						$scope.data.toString();
+						console.log($scope.data)
+					}
+				}
+			})
+			
+		</script>
+	</body>
+</html>
