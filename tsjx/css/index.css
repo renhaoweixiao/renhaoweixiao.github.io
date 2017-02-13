@@ -1,0 +1,340 @@
+/*
+ *全局样式
+ */
+*{
+	margin: 0;
+	padding: 0;
+}
+.content{
+	margin: 0 12.5%;
+}
+.float{
+	clear: float;
+}
+li{
+	list-style: none;
+}
+ /*
+  * 全局样式结束
+  */
+ /*
+  * 头部样式
+  */
+.head{
+	
+	margin-bottom: 3px;
+	height: 280px;
+	background-image: url(../imgs/headBg.png);
+	overflow: hidden;
+}
+.middle img{
+	vertical-align: baseline;
+}
+.title_1{
+	display: inline-block;
+	font-size: 40px;
+	line-height:80px;
+	
+	font-weight: bold;
+	
+}
+.middle{
+	padding: 0;
+}
+.middle_1{
+	float: left;
+}
+.middle_2{
+	float: left;
+}
+.weixin_img{
+	float: left;
+	
+}
+.weixin_text{
+	display: block;
+	float: left;
+	line-height: 30px;
+	margin-left: -4px;
+	margin-right: 10px;
+}
+.weibo_img{
+	margin: 7px 7px 7px 3px;
+	float: left;
+}
+.weibo_text{
+	display: block;
+	float: left;
+	line-height: 30px;
+	margin-left: -3px;
+}
+.right{
+	height: 80px;
+	float: right;
+	padding-top: 25px;
+}
+.right1{
+	float: right;
+}
+.right2{
+	float: right;
+}	
+.right_r{
+	height: 85px;
+	padding-top: 29px;
+}
+.middle span{
+	color: white;
+}
+.title_2{
+	font-size: 30px;
+	display: block;
+	margin-top: 100px;
+	margin-bottom: 20px;
+	margin-left: 200px;
+}
+.navg{
+	margin-left: 320px;
+	height: 50px;
+}
+.navg ul li{
+	float: left;
+	margin-right: 15px;
+}
+.navg span{
+	line-height: 26px;
+	margin-left: 5px;
+	color: white;
+}
+
+.button button{
+	width: 200px;
+	padding: 8px;
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 4px;
+	display: block;
+	margin-left: 746px;
+	font-size: 16px;
+}
+/*
+ * 头部样式结束
+ */
+
+/*
+ * 导航仪，保护神，支付宝，清道夫
+ */
+.nav_intro{
+	margin-left: 40px;
+	margin-top: 40px;
+	float: left;
+	padding: 10px;
+}
+.box_list{
+	height: 230px;
+	border: 1px solid black;
+	margin-bottom: 3px;
+}
+.title_imp{
+	display: block;
+	font-size: 35px;
+	margin-bottom: 15px;
+	font-weight: bold;
+}
+.list_intro{
+	display: block;
+	font-size: 20px;
+}
+.nav_img{
+	float: right;
+	padding-top: 15px;
+}
+.nav_img img{
+	height: 200px;
+}
+.img_nav{
+	float: left;
+	padding-top: 15px;
+}
+.img_nav img{
+	height: 200px;
+}
+.intro_nav{
+	margin-right: 40px;
+	margin-top: 40px;
+	float: right;
+	padding: 10px;
+}
+/*
+ * 导航仪，保护神，支付宝，清道夫结束
+ */
+/*
+ * 客户评价
+ */
+.evaluate{
+	position: relative;
+	padding-top: 10px;
+	margin-top: 5px;
+	height: 300px;
+	background-color: #f0f0f0;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+.eva_title{
+	font-size: 26px;
+	text-align: center;
+	margin-bottom: 50px;
+}
+.eva_img{
+	float: left;
+}
+.eva_txt{
+	width: 500px;
+	color: #A9A9A9;
+	float: right;
+}
+#btn .eva_left{
+	left: 3%;
+}
+#btn .eva_right{
+	right: 3%;
+}
+#btn div{
+	width: 30px;
+	height: 52px;
+	position: absolute;
+	top: 58%;
+	z-index: 2;
+	background: rgba(0,0,0,.3);
+	color: #fff;
+	font-size: 48px;
+	line-height: 52px;
+	text-align: center;
+	margin-top: -26px;
+	cursor: pointer;
+	
+}
+/*
+ * 客户评价结束
+ */
+/*
+ * 加入我们
+ */
+.join{
+	height: 200px;
+	background: url(../imgs/join.png);
+	background-size: 100% 200px; 
+	position: relative;
+}
+.join_1{
+	position: absolute;
+	width: 198px;
+	height: 70px;
+	border: 1px solid black;
+	background-color: white;
+	left: 15%;
+	top: 10%;
+	padding: 17px 5px;
+	text-align: center;
+}
+.join_1_btn button{
+	position: absolute;
+	padding: 16px;
+	display: block;
+	width: 186px;
+	text-align: center;
+	left: 15.5%;
+	bottom: 13%;
+	font-size: 25px;
+	font-weight: bold;
+	border-radius: 4px;
+	border: 1px solid #a9a9a9;
+}
+.join_2{
+	position: absolute;
+	width: 198px;
+	height: 70px;
+	border: 1px solid black;
+	background-color: white;
+	right: 4%;
+	top: 10%;
+	padding: 17px 5px;
+	text-align: center;
+}
+.join_2_btn button{
+	position: absolute;
+	padding: 16px;
+	display: block;
+	width: 186px;
+	text-align: center;
+	right: 4.5%;
+	bottom: 13%;
+	font-size: 25px;
+	font-weight: bold;
+	border-radius: 4px;
+	border: 1px solid #a9a9a9;
+}
+/*
+ * 加入我们结束
+ */
+/*
+ * 页脚
+ */
+.footer{
+	height: 200px;
+	background-color: #edeff1;
+}
+.weixin_2code{
+	position: relative;
+	height: 250px;
+}
+.weixin_2code img{
+	display: block;
+	position: absolute;
+	left: 25%;
+	top: 15%;
+}
+.weixin_2code span{
+	display: block;
+	position: absolute;
+	left: 31.5%;
+	top: 45%;
+	color: #bac1c8;
+}
+.footer_ul ul li{
+	color: #bac1c8;
+	padding-top: 10px;
+}
+.footer_ul{
+	padding-top: 30px;
+	margin-right: 2%;
+}
+.footer_ul span{
+	display: inline-block;
+}
+.xian{
+	padding-top: 5px;
+	margin-bottom: 10px;
+	width: 16px;
+	border-bottom: 1px solid #bac1c8;
+}
+/*
+ * 页脚结束
+ */
+/*
+ * 备案号
+ */
+.beian{
+	height: 30px;
+	background-color: #000A33;
+	color: #FFFFFF;
+	padding-top: 5px;
+	text-align: center;
+}
+.beian span{
+	line-height: 14px;
+	font-size: 14px;
+}
+/*
+ * 备案号结束
+ */
