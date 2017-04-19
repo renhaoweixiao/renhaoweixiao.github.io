@@ -100,8 +100,8 @@
 		<script src="js/jquery-1.12.2.min.js"></script>
 		<script>
 			$(function(){
-				var $pics = $("#pic ul li");
-				var $lis = $("#lis ul li");
+				var $pics = $("#pic ul li");  //图片
+				var $lis = $("#lis ul li");   //焦点
 				var $btns = $("#btn div"); 
 				var index = 0;
 				var timer = null;
@@ -116,11 +116,12 @@
 				
 				//鼠标移入焦点
 			$lis.mouseover(function(){
-				index = $(this).index();
-				$(this).addClass("on").siblings().removeClass("on");
+				index = $(this).index();  //鼠标移入时获取当前焦点的索引
+				$(this).addClass("on").siblings().removeClass("on");  //为当前焦点添加on类 ，siblins（）遍历所有焦点并移除所有on
 				$pics.eq(index).stop(true).animate({
 					"opacity":1},1000).siblings().stop(true).animate({"opacity":0},1000)
 			});
+			  //eq（index）选中当前索引为index的li，并停止所有动画，1秒后opacity变为1，并遍历所有li，停止所有动画，opcity变为0
 			
 				//左右按钮控制
 				$btns.click(function(){
